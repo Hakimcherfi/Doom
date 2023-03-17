@@ -17,18 +17,18 @@ class Player:
         speed_cos = speed * cos_a
 
         keys = pg.key.get_pressed()
-        if keys[pg.K_8]:
+        if keys[pg.K_i]: #forward
             dx += speed_cos
             dy += speed_sin
-        if keys[pg.K_5]:
+        if keys[pg.K_k]: #backward
             dx -= speed_cos
             dy -= speed_sin
-        if keys[pg.K_4]:
-            dx -= speed_cos
-            dy += speed_sin
-        if keys[pg.K_6]:
-            dx += speed_cos
-            dy -= speed_sin
+        if keys[pg.K_j]: #left
+            dx += speed_sin
+            dy -= speed_cos
+        if keys[pg.K_l]: #right
+            dx -= speed_sin
+            dy += speed_cos
 
         self.check_wall_collision(dx,dy)
 
@@ -38,6 +38,7 @@ class Player:
         if keys[pg.K_RIGHT]:
             self.angle += PLAYER_ROT_SPEED * self.game.delta_time
         self.angle %= math.tau
+
     def check_wall(self,x,y):
         return (x,y) not in self.game.map.world_map
     
